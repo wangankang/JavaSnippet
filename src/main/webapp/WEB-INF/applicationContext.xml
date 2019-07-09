@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/c http://www.springframework.org/schema/context/spring-c.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+    <context:component-scan base-package="test.SpringMVC">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+<!--    <bean id="datasource"-->
+<!--          class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+<!--        <property name="url" value="jdbc:mysql://10.0.21.66:3306/restaurant_book"/>-->
+<!--        <property name="username" value="restaurant"/>-->
+<!--        <property name="password" value="restaurant" />-->
+<!--    </bean>-->
+
+<!--    <bean id="datasource" class="org.springframework.jndi.JndiObjectFactoryBean">-->
+<!--        <property name="jndiName" value="java:comp/env/jdbc/mysql"></property>-->
+<!--    </bean>-->
+
+    <jee:jndi-lookup jndi-name="jdbc/mysql" id="datasource" resource-ref="true"/>
+
+    <bean id="orderDaoImpl"
+          class="test.SpringMVC.model.OrderDaoImpl">
+        <property name="datasource" ref="datasource"/>
+    </bean>
+
+    
+
+</beans>
