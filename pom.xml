@@ -25,7 +25,6 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-
     <!--    JSTL-->
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -76,6 +75,11 @@
       <version>2.12.0</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.1</version>
+    </dependency>
   </dependencies>
 
   <build>
